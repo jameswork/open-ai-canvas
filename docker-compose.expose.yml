@@ -1,0 +1,10 @@
+# 仅供生产服务器本地/隧道访问 PostgreSQL 和 Redis，不要把端口绑定到 0.0.0.0。
+# 使用方式：在所有 docker compose 命令上追加 -f docker-compose.expose.yml，例如
+#   docker compose --env-file .env -f docker-compose.deploy.yml -f docker-compose.build.yml -f docker-compose.expose.yml up -d postgres redis
+services:
+  postgres:
+    ports:
+      - "127.0.0.1:5432:5432"
+  redis:
+    ports:
+      - "127.0.0.1:6379:6379"
